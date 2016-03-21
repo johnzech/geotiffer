@@ -1,14 +1,17 @@
 # geotiffer
 
-STATUS
+## STATUS
+
 	Geotiffer is in early dev phase (pre-alpha at best)... use at your discretion.
 
-WHAT
+## WHAT
+
 	Geotiffer is a geopdf to geotiff converter, built specifically to handle batch conversion. It is based on the topics covered in a USGS whitepaper titled "Converting US Topo GeoPDF® Layers to GeoTIFF"
 
 	Currently, Geotiffer is being developed for use on Windows machines.
 
-WHO
+## WHO
+
 	Principal Author: John Zechlin
 
 	Credits: 
@@ -16,7 +19,8 @@ WHO
 		- Thanks to MotionDSP for sponsoring this effort (www.motiondsp.com)
 		- Also, thanks to Larry Moore (U.S.G.S) for writing this paper: http://nationalmap.gov/ustopo/documents/ustopo2gtif_current.pdf
 
-HOW
+## HOW
+
 	To use...
 
 	obvious pre step: Obtain geoPDFs from https://store.usgs.gov, make sure you download one of the latest year's mapserver-6-4-1
