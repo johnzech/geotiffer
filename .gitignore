@@ -6,6 +6,10 @@ __pycache__/
 # C extensions
 *.so
 
+# pdfs and tiffs used for testing
+*.pdf
+*.tif
+
 # Distribution / packaging
 .Python
 env/
