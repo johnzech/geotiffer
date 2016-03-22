@@ -49,7 +49,7 @@ class GeoTiffer(object):
 				break
 			return pdf_paths, dir
 		elif path.endswith(".pdf"):
-			return [path], os.path.dirname(os.path.abspath(path))
+			return [os.path.basename(path)], os.path.dirname(os.path.abspath(path))
 		else:
 			return []
 
