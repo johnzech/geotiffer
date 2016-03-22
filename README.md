@@ -24,7 +24,7 @@
 
 	To use...
 
-	obvious pre step: Obtain geoPDFs from https://store.usgs.gov, make sure you download one of the latest editions.
+	Note: Obtain geoPDFs from https://store.usgs.gov, make sure you download one of the latest editions.
 
 	If running the python version:
 		1. You'll need these installed:

@@ -20,6 +20,8 @@ if __name__ == "__main__":
 	os.rename('dist', 'geotiffer')
 	shutil.copy('./redist/gdalwarp.exe', 'geotiffer')
 	shutil.copy('./geotiffer.cfg', 'geotiffer')
+	shutil.copy('./README.md', 'geotiffer')
+	shutil.copy('./LICENSE', 'geotiffer')
 	zipf = zipfile.ZipFile('geotiffer.zip', 'w')
 	zipdir('geotiffer', zipf)
 	shutil.rmtree('build')
