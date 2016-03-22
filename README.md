@@ -17,18 +17,18 @@
 	Credits: 
 		- Geotiffer uses Python, the GDAL library, and GDAL python bindings (http://gdal.org/).
 		- Thanks to MotionDSP for sponsoring this effort (www.motiondsp.com)
-		- Also, thanks to Larry Moore (U.S.G.S) for writing this paper: http://nationalmap.gov/ustopo/documents/ustopo2gtif_current.pdf
+		- Also, thanks to Larry Moore (U.S.G.S) for writing this paper: [http://nationalmap.gov/ustopo/documents/ustopo2gtif_current.pdf] 
 
 ## HOW
 
 	To use...
 
-	obvious pre step: Obtain geoPDFs from https://store.usgs.gov, make sure you download one of the latest year's mapserver-6-4-1
+	obvious pre step: Obtain geoPDFs from [https://store.usgs.gov], make sure you download one of the latest year's mapserver-6-4-1
 
 	If running the python version:
 		1. You'll need these installed:
 			-Python 2.6 or 2.7 variants
-			-GDAL and Python bindings (the ones found here: http://www.gisinternals.com/query.html?content=filelist&file=release-1600-gdal-1-11-0-mapserver-6-4-1.zip
+			-GDAL and Python bindings (the ones found here: [http://www.gisinternals.com/query.html?content=filelist&file=release-1600-gdal-1-11-0-mapserver-6-4-1.zip]
 		2. Run print_layers.py to confirm your map/maps have the layers you expect. Pass a file or a directory (if directory, all pdf files in the dir will be analyzed).
 			- python print_layers.py <file_or_directory>
 		3. Review config items in config file, geotiffer.cfg (or create your own config file). Most notable is a list of layers you want to include.
