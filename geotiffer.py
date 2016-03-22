@@ -1,4 +1,6 @@
 import os, sys
+import threading
+import time
 import ConfigParser
 from gdal_wrappers.geoPDFlayers import LayerList
 from gdal_wrappers.geoPDFneatline import Neatline
@@ -25,6 +27,11 @@ class GeoTiffer(object):
 			self.fix_no_data = False
 		self.x_trim_factor = self.getConfigOption('x_trim_factor')
 		self.y_trim_factor = self.getConfigOption('y_trim_factor')
+
+		if self.getConfigOption('threaded').upper() in ['YES', 'Y', 'TRUE', 'T', 'ON']:
+			self.threaded = True
+		else:
+			self.threaded = False
 
 	def initConfigParser(self, path):
 		configParser = ConfigParser.SafeConfigParser()
@@ -70,9 +77,41 @@ class GeoTiffer(object):
 			neatline.outputToFile()
 
 	def processWarps(self):
+		if self.threaded:
+			self.processWarpsThreaded()
+		else:
+			self.processWarpsSequential()
+
+	def processWarpsThreaded(self):
+		start_time = time.time()
+		threads = {}
 		for path in self.pdf_list:
-			warp = Warp(self.getFullPath(path), self.getCSVOutputPath(path), self.append_filename, self.layers, self.layers_include_exclude, self.dpi, self.fix_no_data)
-			warp.executeGdalWarp()
+			threads[path] = threading.Thread(target=self.processWarp, args=[path])
+			threads[path].start()
+
+		running = True
+		while running:
+			running = False
+			for path, thread in threads.items():
+				if thread.isAlive():
+					running = True
+			if running:
+				print "Waiting for gdalwarp threads to process."
+				time.sleep(2)
+
+		duration = time.time() - start_time
+		print "Warp Timer: %s" % duration
+
+	def processWarpsSequential(self):
+		start_time = time.time()
+		for path in self.pdf_list:
+			self.processWarp(path)
+		duration = time.time() - start_time
+		print "Warp Timer: %s" % duration
+
+	def processWarp(self, path):
+		warp = Warp(self.getFullPath(path), self.getCSVOutputPath(path), self.append_filename, self.layers, self.layers_include_exclude, self.dpi, self.fix_no_data)
+		warp.executeGdalWarp()
 
 	def cleanUpCSVOutputFiles(self):
 		for path in self.pdf_list:
