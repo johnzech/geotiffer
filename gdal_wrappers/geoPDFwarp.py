@@ -23,6 +23,7 @@ class Warp(object):
 		return "%s\\%s_%s_%s.tiff" % (dir,self.z,base,self.output_file_append)
 
 	def getGdalLayersOnOff(self):
+		# either exclude the layers in self.layers or include only those layers
 		if self.layers_on_off == 'off':
 			return "GDAL_PDF_LAYERS_OFF"
 		else:
@@ -44,6 +45,9 @@ class Warp(object):
 			'GDAL_PDF_DPI',
 			str(self.dpi)
 		]
+
+		# fix no data, basically replace all white (255,255,255) with transparent (0,0,0)
+		# this method produces mixed results (in other words, it could use improvement)
 		if self.fix_nodata:
 			args.extend([
 				'-dstalpha',

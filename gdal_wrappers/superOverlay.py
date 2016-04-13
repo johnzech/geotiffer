@@ -18,7 +18,12 @@ class SuperOverlay(object):
 		return "%s\\%s.vrt" % (self.working_directory,self.output_name)
 
 	def process(self):
+		# two steps to producing tiles from tiffs
+
+		# step 1: create a virtual 'mosaic' of any tiffs in the working directory
 		self.executeBuildVrt()
+
+		# step 2: pass the vrt (from step 1) to gdal2tiles
 		self.executeGdal2Tiles()
 
 	def executeBuildVrt(self):
@@ -32,11 +37,11 @@ class SuperOverlay(object):
 
 	def executeGdal2Tiles(self):
 		args = [
-			'-p', 
-			'geodetic', 
-			'-k', 
-			'-z', 
-			"%s-%s" % (self.min_zoom, self.max_zoom),
+			'-p', # profile
+			'geodetic', # profile = geodetic
+			'-k', # kml output flag (creates superoverlay kml file)
+			'-z', # zoom levels
+			"%s-%s" % (self.min_zoom, self.max_zoom), # zoom levels = min-max
 			self.getOutputVrt(), 
 			self.working_directory
 		]
