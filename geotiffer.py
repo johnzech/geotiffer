@@ -141,12 +141,12 @@ class GeoTiffer(object):
 		for thread_id in range(1, int(self.thread_count)):
 			pdfs_by_thread.append([])
 
-		thread_id = 0
+		thread_id = 1
 		for path in self.pdf_list:
 			pdfs_by_thread[thread_id].append(path)
 			thread_id += 1
 			if thread_id == self.thread_count:
-				thread_id = 0
+				thread_id = 1
 		return pdfs_by_thread
 
 	def processWarpsSequential(self):
