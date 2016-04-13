@@ -18,7 +18,10 @@ Principal Author: John Zechlin
 
 Credits: 
 - Geotiffer uses Python, the GDAL library, and GDAL python bindings (http://gdal.org/).
-- Geotiffer redistributes gdalwarp.exe (GDAL 1.11.0, released 2014/04/16)
+- Geotiffer redistributes (GDAL 1.11.0, released 2014/04/16):
+  - gdalwarp.exe 
+  - gdal2tiles.py
+  - gdalbuildvrt.exe
 - Thanks to MotionDSP for sponsoring this effort (www.motiondsp.com)
 - Also, thanks to Larry Moore (U.S.G.S) for writing this paper: http://nationalmap.gov/ustopo/documents/ustopo2gtif_current.pdf 
 
